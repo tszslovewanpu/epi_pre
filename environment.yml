@@ -1,0 +1,8 @@
+name: epitope-se3bench
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+# Activate this environment, then install torch and requirements-dev.txt
+# using the commands in README.md. CUDA wheels depend on the target GPU.

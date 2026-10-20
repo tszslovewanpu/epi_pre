@@ -1,0 +1,94 @@
+{
+  "bits": "1101",
+  "callbacks": {
+    "early_stopping": {
+      "patience": 15
+    },
+    "lr_scheduler": {
+      "kwargs": {
+        "factor": 0.5,
+        "mode": "max",
+        "patience": 5
+      },
+      "name": "ReduceLROnPlateau"
+    }
+  },
+  "dataset": {
+    "ab_embedding_model": "igfold",
+    "ag_embedding_model": "esm2",
+    "aux_feature_mode": "one_hot",
+    "cache_path": "${EPITOPE_CACHE_ROOT}/asep_plm_aux_edges_v2.pt",
+    "id_list_path": "${EPITOPE_DATA_ROOT}/asepv1-AbDb-IDs.txt",
+    "include_aux_features": true,
+    "interim_graph_dir": "${EPITOPE_DATA_ROOT}/asepv1_interim_graphs",
+    "normalize_plm": false,
+    "pdb_root": "${EPITOPE_DATA_ROOT}/structures",
+    "rebuild_cache": false,
+    "split_method": "epitope_group",
+    "split_path": "${EPITOPE_DATA_ROOT}/split_dict.pt",
+    "strict_coords": true,
+    "verbose": true
+  },
+  "debug_limit": 0,
+  "gpu": 0,
+  "hparams": {
+    "augmentation": {
+      "coord_jitter_prob": 1.0,
+      "coord_jitter_std": 0.15,
+      "enabled": true,
+      "feature_dropout_prob": 0.0,
+      "feature_noise_std": 0.0,
+      "global_rotation_prob": 0.0
+    },
+    "bce_weight": 1.0,
+    "d_model": 256,
+    "dice_smooth": 1.0,
+    "dice_weight": 0.1,
+    "dim_ff": 512,
+    "dropout": 0.1,
+    "focal_alpha": 0.25,
+    "focal_gamma": 2.0,
+    "focal_weight": 0.0,
+    "geometry": {
+      "d_max": 30.0,
+      "d_min": 0.0,
+      "n_fourier_bands": 4,
+      "n_query_key_points": 4,
+      "n_rbf": 16,
+      "n_rope_freqs": 5,
+      "n_value_points": 4,
+      "pair_hidden_dim": 32,
+      "rope_max_freq": 2.5,
+      "rope_min_freq": 0.08,
+      "use_distance_bias": true,
+      "use_fourier_bias": true,
+      "vector_channels": 16
+    },
+    "grad_clip": 1.0,
+    "max_epochs": 100,
+    "mil_weight": 0.75,
+    "n_heads": 8,
+    "n_layers_ab": 4,
+    "n_layers_ag": 4,
+    "n_layers_cross": 2,
+    "pos_weight": null,
+    "progress": false,
+    "use_cdr_type": false,
+    "use_global_context": true,
+    "use_pair_mil": true,
+    "use_cross_attention": true
+  },
+  "method": "lf3drope_module_ablation",
+  "monitor": "auprc",
+  "num_threads": 4,
+  "optimizer": {
+    "name": "AdamW",
+    "params": {
+      "lr": 0.0001,
+      "weight_decay": 1e-05
+    }
+  },
+  "seed": 42,
+  "split": "group",
+  "try_gpu": true
+}

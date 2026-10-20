@@ -1,0 +1,5 @@
+{
+  "data_root": "/path/to/asepv1.2.0",
+  "cache_root": ".local/cache",
+  "runs_root": ".local/runs"
+}
